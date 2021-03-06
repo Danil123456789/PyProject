@@ -1,7 +1,7 @@
 class BlackBox:
     __instance = None
 
-    def get_output_message(self, message):
+    def get_response(self, message):
         newMessage = ""
         for i in message:
             newMessage += chr(ord(i) + 1)

@@ -23,4 +23,4 @@ class SingletonController:
 controller = SingletonController().get_instance()
 blackBx = blackBox.BlackBox().get_instance()
 
-print(blackBx.get_output_message(input()))
+print(blackBx.get_response(input()))
