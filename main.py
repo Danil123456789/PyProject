@@ -1,14 +1,26 @@
-class SingletonBlackBox:
+import blackBox
+
+
+class SingletonController:
     __instance = None
 
     def __init__(self):
-        self.some_property = 42
+        self.users = {}
+
+    def add_user(self):
+        self.users.fromkeys(len(self.users), 0)  # ключ - это id; значение - это level
+
+    def get_user(self, key):
+        self.users.get(key)
 
     @classmethod
     def get_instance(cls):
         if not cls.__instance:
-            cls.__instance = Singleton()
+            cls.__instance = SingletonController()
         return cls.__instance
 
 
-obj1 = SingletonBlackBox.get_instance()
+controller = SingletonController().get_instance()
+blackBx = blackBox.BlackBox().get_instance()
+
+print(blackBx.get_output_message(input()))
