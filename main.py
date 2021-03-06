@@ -1,16 +1,14 @@
-# This is a sample Python script.
+class SingletonBlackBox:
+    __instance = None
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def __init__(self):
+        self.some_property = 42
+
+    @classmethod
+    def get_instance(cls):
+        if not cls.__instance:
+            cls.__instance = Singleton()
+        return cls.__instance
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+obj1 = SingletonBlackBox.get_instance()
