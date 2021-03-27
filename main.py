@@ -48,33 +48,18 @@ def start(message):
         bot.send_message(message.chat.id, "Привет дружище! Хочешь начать игру?", reply_markup=keyboard)
     elif index_step == 1:
         randNum = int(controller.get_value(message.chat.id).split('!')[1])
-        isComplete = True
-        text = message.text
-        res = ""
-        for i in text:
-            letterNum = ord(i) - 1072
-            print(str(ord(i)) + " " + str(letterNum))
-            if 0 <= letterNum <= 33 or ord(i) == 32:
-                if ord(i) == 32:
-                    num = 128513 + randNum + 32
-                else:
-                    num = 128513 + randNum + letterNum
-                res += chr(num)
-            else:
-                isComplete = False
-                break
-        if isComplete:
-            bot.send_message(message.chat.id, res)
-        else:
-            bot.send_message(message.chat.id, "Вводи только русские буквы или пробел!")
-
+        response = blackBx.get_response(message.text, randNum)
+        bot.send_message(message.chat.id, response)
+        if response == "я победил тебя":
+            bot.send_message(message.chat.id, "Вы выйграли!")
+            controller.set_value(call.message.chat.id, F"0!0")
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     # Если сообщение из чата с ботом
     if call.message:
         if call.data == "test":
-            bot.send_message(call.message.chat.id, "Супер, тогда приступай к испытанию чёрного ящика!\nТвоя задача победить меня, заветной фразой: “Я победил тебя, робот!”")
+            bot.send_message(call.message.chat.id, "Супер, тогда приступай к испытанию чёрного ящика!\nТвоя задача победить меня, заветной фразой: “я победил тебя”")
             bot.send_message(call.message.chat.id, "Введи любой текст(без цифр)")
             controller.set_value(call.message.chat.id, F"1!{random.randint(0, 10)}")
 
