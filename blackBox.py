@@ -5,6 +5,7 @@ class BlackBox:
         isComplete = True
         res = ""
         print(randNum)
+        text = text.lower()
         for i in text:
             letterNum = ord(i) - 1072
             smileNum = ord(i) - 128513 - randNum
