@@ -18,14 +18,14 @@ def start(message):
         controller.add_user(message.chat.id)
     index_step = int(controller.get_value(message.chat.id).split('!')[0])
     if index_step == 0:
-        halloMessage()
+        halloMessage(message)
     elif index_step == 1:
         randNum = int(controller.get_value(message.chat.id).split('!')[1])
         response = blackBx.get_response(message.text, randNum)
         bot.send_message(message.chat.id, response)
         if response == WIN_PHRASE:
             bot.send_message(message.chat.id, "Вы выйграли!")
-            halloMessage()
+            halloMessage(message)
             controller.set_value(message.chat.id, F"0!0")
 
 
@@ -40,7 +40,7 @@ def callback_inline(call):
             controller.set_value(call.message.chat.id, F"1!{random.randint(0, 10)}")
 
 
-def halloMessage():
+def halloMessage(message):
     keyboard = types.InlineKeyboardMarkup()
     callback_button1 = types.InlineKeyboardButton(text="Да", callback_data="test")
     keyboard.add(callback_button1)
