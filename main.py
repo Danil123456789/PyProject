@@ -6,7 +6,7 @@ from telebot import *
 API_TOKEN = '1242927602:AAGdNmVXkoVTbGa3qM6BRljvN5MHd9hRytU'
 bot = TeleBot(API_TOKEN)
 
-WIN_PHRASE = "я победил тебя, робот."
+WIN_PHRASE = "я победил тебя, робот"
 
 controller = singeltone.SingletonController().get_instance()
 blackBx = blackBox.BlackBox().get_instance()
