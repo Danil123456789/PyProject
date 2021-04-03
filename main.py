@@ -6,7 +6,7 @@ from telebot import *
 API_TOKEN = '1242927602:AAGdNmVXkoVTbGa3qM6BRljvN5MHd9hRytU'
 bot = TeleBot(API_TOKEN)
 
-WIN_PHRASE = "Я победил тебя"
+WIN_PHRASE = "Я победил тебя, робот."
 
 controller = singeltone.SingletonController().get_instance()
 blackBx = blackBox.BlackBox().get_instance()
@@ -36,7 +36,7 @@ def callback_inline(call):
         if call.data == "test":
             bot.send_message(call.message.chat.id,
                              f"Супер, тогда приступай к испытанию чёрного ящика!\nТвоя задача победить меня, заветной фразой: “{WIN_PHRASE}”")
-            bot.send_message(call.message.chat.id, "Введи любой текст(без цифр)")
+            bot.send_message(call.message.chat.id, "Введи любой текст или смайлики ;)")
             controller.set_value(call.message.chat.id, F"1!{random.randint(0, 10)}")
 
 
