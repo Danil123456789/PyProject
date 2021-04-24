@@ -1,6 +1,7 @@
 import blackBox
 import singeltone
 import random
+import test_blackBox
 from telebot import *
 
 API_TOKEN = '1242927602:AAGdNmVXkoVTbGa3qM6BRljvN5MHd9hRytU'
@@ -11,6 +12,9 @@ WIN_PHRASE = "я победил тебя, робот"
 controller = singeltone.SingletonController().get_instance()
 blackBx = blackBox.BlackBox().get_instance()
 
+test = test_blackBox.TestBlackBox()
+test.testBox_1()
+test.testBox_2()
 
 @bot.message_handler(content_types=['text'])
 def start(message):

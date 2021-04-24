@@ -10,6 +10,7 @@ class BlackBox:
         res = ""
         print(randNum)
         text = text.lower()
+        print(text)
         for i in text:
             letterNum = ord(i) - 1072
             smileNum = ord(i) - 128513 - randNum
